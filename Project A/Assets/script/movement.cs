@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -58,6 +59,7 @@ public class NewBehaviourScript : MonoBehaviour
         Walk(dir);
 
         wallGrab = coll.onWall && Input.GetKey(KeyCode.LeftShift);
+        
         if (wallGrab)
         {
             rb.velocity = new Vector2(rb.velocity.x, y * speed);
@@ -73,12 +75,39 @@ public class NewBehaviourScript : MonoBehaviour
             }
 
         }
-        wallGrab = coll.onWall && Input.GetKey(KeyCode.LeftShift);
 
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            if (coll.onGround)
+                Jump();
+            if (coll.onWall && !coll.onGround)
+            {
+                //wallJump();
+            }
+                
+        }
 
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Dash(xRaw, yRaw);
+        }
+    }
+
+    private void Dash(float x, float y)
+    {
+        wallJumped = true;
+        rb.velocity = Vector2.zero;
+        rb.velocity += new Vector2(x, y).normalized * 30;
 
     }
 
+    private void WallJump()
+    {
+        //StopCoroutine(DisableMovement(0));
+        //StartCoroutine(DisableMovement(.1f));
+
+        Vector2 wallDir = coll.onRightWall ? Vector2.left : Vector2.right;
+    }
     private void WallSlide()
     {
         if (!canMove)
@@ -89,15 +118,23 @@ public class NewBehaviourScript : MonoBehaviour
 
     private void Walk(Vector2 dir)
     {
+
+        if (!canMove)
+            return;
         if (!wallJumped)
-        {
-            rb.velocity = new Vector2(dir.x * speed, rb.velocity.y);
-        }
-        else
         {
             rb.velocity = (new Vector2(dir.x * speed, rb.velocity.y));
         }
+        else
+        {
+            rb.velocity = Vector2.Lerp(rb.velocity, (new Vector2(dir.x * speed, rb.velocity.y)), .5f * Time.deltaTime);
+        }
+        
+    }
+    private void Jump()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 0);
+        rb.velocity += Vector2.up * jumpForce;
 
     }
-
 }
