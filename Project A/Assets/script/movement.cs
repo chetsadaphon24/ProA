@@ -29,7 +29,17 @@ public class NewBehaviourScript : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
     [SerializeField] private TrailRenderer tr;
 
+    [Header("Dashing")]
+    [SerializeField] private float dashingVelocity = 14f;
+    [SerializeField] private float dashTime = 0.5f;
+    private Vector2 dashingDir;
+    private bool isDashing;
+    private bool canDash = true;
 
+    private void Start()
+    {
+        tr = GetComponent<TrailRenderer>();
+    }
 
     private void Update()
     {
@@ -53,7 +63,30 @@ public class NewBehaviourScript : MonoBehaviour
             Flip();
         }
 
-        
+        var dashInput = Input.GetButtonDown("Dash");
+
+        if (dashInput && canDash)
+        {
+            isDashing = true;
+            canDash = false;
+            tr.emitting = true;
+            dashingDir = new Vector2(horizontal, Input.GetAxisRaw("Vertical"));
+            if (dashingDir == Vector2.zero)
+            {
+                dashingDir = new Vector2(transform.localScale.x, 0);
+            }
+            StartCoroutine(StopDashing());
+        }
+
+        if (isDashing)
+        {
+            rb.velocity = dashingDir.normalized * dashingVelocity;
+        }
+
+        if (IsGrounded())
+        {
+            canDash = true;
+        }
     }
 
     private void FixedUpdate()
@@ -139,4 +172,10 @@ public class NewBehaviourScript : MonoBehaviour
         }
     }
 
+    private IEnumerator StopDashing()
+    {
+        yield return new WaitForSeconds(dashTime);
+        tr.emitting = false;
+        isDashing = false;
+    }
 }
