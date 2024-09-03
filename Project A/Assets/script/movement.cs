@@ -58,6 +58,25 @@ public class NewBehaviourScript : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
         }
 
+        if ( rb.velocity.y > 0f &&  !IsGrounded() ) 
+        {
+            animator.SetBool("IsJumping", true);
+            animator.SetFloat("JumpSpeed", rb.velocity.y);
+        }
+
+        if (rb.velocity.y < 0f && !IsGrounded())
+        {
+            animator.SetBool("IsJumping", true);
+            animator.SetFloat("JumpSpeed", rb.velocity.y);
+        }
+
+        if (IsGrounded() )
+        {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsClimbing", false );
+        }
+
+
         WallSlide();
         WallJump();
 
@@ -119,10 +138,12 @@ public class NewBehaviourScript : MonoBehaviour
         {
             isWallSliding = true;
             rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlidingSpeed, float.MaxValue));
+            animator.SetBool("IsClimbing", true);
         }
         else
         {
             isWallSliding = false;
+            animator.SetBool("IsClimbing", false);
         }
     }
 
