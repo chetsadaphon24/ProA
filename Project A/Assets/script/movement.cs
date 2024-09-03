@@ -36,6 +36,8 @@ public class NewBehaviourScript : MonoBehaviour
     private bool isDashing;
     private bool canDash = true;
 
+    public Animator animator;
+
     private void Start()
     {
         tr = GetComponent<TrailRenderer>();
@@ -44,6 +46,7 @@ public class NewBehaviourScript : MonoBehaviour
     private void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
+        animator.SetFloat("Speed", Mathf.Abs(horizontal));
 
         if (Input.GetButtonDown("Jump") && IsGrounded())
         {
