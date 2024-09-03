@@ -197,10 +197,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 10.71, y: 8.79}
+    - - {x: 8.79, y: 8.79}
       - {x: -17.5, y: 8.79}
       - {x: -17.5, y: -21.4}
-      - {x: 10.71, y: -21.4}
+      - {x: 8.79, y: -21.4}
   m_UseDelaunayMesh: 0
 --- !u!4 &6422987
 Transform:
@@ -7393,10 +7393,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 10.71, y: 8.79}
-      - {x: -17.5, y: 8.79}
-      - {x: -17.5, y: -21.4}
-      - {x: 10.71, y: -21.4}
+    - - {x: 30.8, y: 27.38}
+      - {x: -16.3, y: 27.38}
+      - {x: -16.3, y: -6.9}
+      - {x: 30.8, y: -6.9}
   m_UseDelaunayMesh: 0
 --- !u!4 &562583256
 Transform:
@@ -7407,7 +7407,7 @@ Transform:
   m_GameObject: {fileID: 562583253}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 57.89, y: -1.68, z: -10.010505}
+  m_LocalPosition: {x: 58.58, y: -1.68, z: -10.010505}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11018,7 +11018,7 @@ GameObject:
   - component: {fileID: 851356892}
   - component: {fileID: 851356891}
   m_Layer: 0
-  m_Name: Virtual Camera2
+  m_Name: Virtual Camera4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11089,7 +11089,7 @@ Transform:
   m_GameObject: {fileID: 851356890}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -64.878525, y: 2.0799997, z: 0.010504723}
+  m_LocalPosition: {x: -65.56853, y: 2.0799997, z: 0.010504723}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17489,7 +17489,7 @@ Transform:
   m_GameObject: {fileID: 1399645813}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.73151, y: 0.11000025, z: -10}
+  m_LocalPosition: {x: 54.421516, y: 0.11000025, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -21321,7 +21321,7 @@ GameObject:
   - component: {fileID: 1714324147}
   - component: {fileID: 1714324146}
   m_Layer: 0
-  m_Name: Virtual Camera2
+  m_Name: Virtual Camera3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
